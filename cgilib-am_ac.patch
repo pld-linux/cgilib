@@ -1,0 +1,12 @@
+diff -urN cgilib-0.1.1.org/configure.in cgilib-0.1.1/configure.in
+--- cgilib-0.1.1.org/configure.in	Wed Sep 18 15:28:20 2002
++++ cgilib-0.1.1/configure.in	Wed Sep 18 15:45:48 2002
+@@ -37,7 +37,7 @@
+ dnl Checks for programs.
+ AC_PROG_MAKE_SET
+ AC_PROG_CXX
+-AC_CHECK_COMPILERS
++AC_PROG_CC
+ AC_LANG_CPLUSPLUS dnl switch to C++
+ 
+ dnl Checks for dynamic libraries.

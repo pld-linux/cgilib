@@ -1,0 +1,19 @@
+--- cgilib-0.1.1/src/mail.h.orig	Mon Jun 19 17:45:49 2000
++++ cgilib-0.1.1/src/mail.h	Mon Jun 19 17:45:56 2000
+@@ -6,7 +6,7 @@
+ #include <string>
+ #include <list>
+ #include <iostream>
+-#include <cgilib/socket.h>
++#include <socket.h>
+ 
+ typedef list<string> stringlist;
+ typedef list<string>::iterator stringlist_it;
+--- cgilib-0.1.1/test/mail.cc.orig	Mon Jun 19 17:50:56 2000
++++ cgilib-0.1.1/test/mail.cc	Mon Jun 19 17:51:02 2000
+@@ -1,4 +1,4 @@
+-#include <cgilib/mail.h>
++#include <mail.h>
+ int main(int argc, char **argv)
+ {
+ 	mail m("Test message", "Windows sucks!", "root@localhost", "cgilib@localhost");
