@@ -24,7 +24,7 @@ most commonly used for server-side web page scripting) in C++
 %description -l pl
 cgilib jest bibliotek± do programowania CGI (Common Gateway Interface,
 najbardziej popularny sposób uruchamiania skryptów po stronie serwera
-www) napisan± w C++.
+WWW) napisan± w C++.
 
 %package devel
 Summary:	Header files and develpment documentation for cgilib
