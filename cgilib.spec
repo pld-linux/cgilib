@@ -5,7 +5,7 @@ Version:	0.1.1
 Release:	1
 License:	GPL
 Group:		Development/Libraries
-Source0:	ftp://download.sourceforge.net/pub/sourceforge/cgilib/%{name}-%{version}.tar.bz2
+Source0:	http://dl.sourceforge.net/cgilib/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-misc.patch
 Patch1:		%{name}-am_ac.patch
 URL:		http://cgilib.sourceforge.net/
@@ -71,16 +71,16 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS NEWS
-%attr(755,root,root) %{_libdir}/lib*.so.*
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
