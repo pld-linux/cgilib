@@ -3,15 +3,15 @@ Summary(pl):	Biblioteka CGI dla C++
 Name:		cgilib
 Version:	0.1.1
 Release:	1
+License:	GPL
 Group:		Development/Libraries
-URL:		http://cgilib.sourceforge.net/
 Source0:	ftp://download.sourceforge.net/pub/sourceforge/cgilib/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-misc.patch
 Patch1:		%{name}-am_ac.patch
-License:	GPL
-BuildRequires:	libstdc++-devel
+URL:		http://cgilib.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	libstdc++-devel
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -52,11 +52,11 @@ Biblioteka statyczna cgilib.
 rm -rf $RPM_BUILD_ROOT
 
 %setup -q
-%patch0 -p1 -b misc
-%patch1 -p1 -b am_ac
+%patch0 -p1
+%patch1 -p1
 
 %build
-rm -f *.m4
+rm -f *.m4 missing
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
@@ -71,7 +71,7 @@ rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-%post -p /sbin/ldconfig
+%post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %clean
@@ -84,9 +84,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/cgilib
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
+%{_includedir}/cgilib
 
 %files static
 %defattr(644,root,root,755)
