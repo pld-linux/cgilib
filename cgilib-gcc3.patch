@@ -1,0 +1,145 @@
+diff -ru cgilib-0.1.1/src/cgi.cc cgilib-0.1.1-/src/cgi.cc
+--- cgilib-0.1.1/src/cgi.cc	2000-03-25 03:44:01.000000000 +0100
++++ cgilib-0.1.1-/src/cgi.cc	2003-09-16 21:07:54.000000000 +0200
+@@ -1,11 +1,11 @@
+ // Some useful functions for CGI processing...
+ 
+ #include "cgi.h"
+-extern "C" {
++
+ #include <stdlib.h>
+-#include <iostream.h>
+ #include <stdio.h>
+-}
++
++#include <iostream>
+ 
+ CGI::CGI(Method m)
+ {
+@@ -81,7 +81,9 @@
+ 		hex[0]=s[s.find('%')+1];
+ 		hex[1]=s[s.find('%')+2];
+ 		hex[2]=0;
+-		char a=(char) strtoul(hex, NULL, 16);	
++		char a[2];
++		a[0] =(char) strtoul(hex, NULL, 16);	
++		a[1] = 0;
+ 		s=s.replace(s.find('%'), 3, a);
+ 	}
+ 	return s;
+diff -ru cgilib-0.1.1/src/cgi.h cgilib-0.1.1-/src/cgi.h
+--- cgilib-0.1.1/src/cgi.h	2000-03-25 03:44:01.000000000 +0100
++++ cgilib-0.1.1-/src/cgi.h	2003-09-16 21:06:28.000000000 +0200
+@@ -6,6 +6,8 @@
+ #include <map>
+ #include <list>
+ 
++using namespace std;
++
+ typedef map<string const,string> strlist;
+ typedef map<string const,string>::iterator striterator;
+ typedef list<string> stringlist;
+diff -ru cgilib-0.1.1/src/form.cc cgilib-0.1.1-/src/form.cc
+--- cgilib-0.1.1/src/form.cc	2000-03-25 03:44:01.000000000 +0100
++++ cgilib-0.1.1-/src/form.cc	2003-09-16 21:10:10.000000000 +0200
+@@ -44,7 +44,7 @@
+ 	s+=" />" + label;
+ 	body.insert(body.end(), s);
+ }
+-void form::addCheckBox(string name, string label="", bool checked=false)
++void form::addCheckBox(string name, string label, bool checked)
+ {
+ 	string s="<input type=\"checkbox\" name=\"" + name + "\" value=\"on\"";
+ 	if(checked)
+@@ -59,7 +59,7 @@
+ 		body.insert(body.end(), *it);
+ 	body.insert(body.end(), "</select>");
+ }
+-void form::addSubmit(string text="")
++void form::addSubmit(string text)
+ {
+ 	if(text.empty())
+ 		body.insert(body.end(), "<input type=\"submit\" />");
+diff -ru cgilib-0.1.1/src/form.h cgilib-0.1.1-/src/form.h
+--- cgilib-0.1.1/src/form.h	2000-03-25 03:44:01.000000000 +0100
++++ cgilib-0.1.1-/src/form.h	2003-09-16 21:09:34.000000000 +0200
+@@ -4,6 +4,9 @@
+ 
+ #include <string>
+ #include <list>
++
++using namespace std;
++
+ #include "html.h"
+ 
+ class OptionBoxItem;
+diff -ru cgilib-0.1.1/src/html.cc cgilib-0.1.1-/src/html.cc
+--- cgilib-0.1.1/src/html.cc	2000-03-25 03:44:01.000000000 +0100
++++ cgilib-0.1.1-/src/html.cc	2003-09-16 21:11:10.000000000 +0200
+@@ -1,11 +1,11 @@
+ // Some useful functions for HTML code generation
+ 
+ #include "html.h"
+-extern "C" {
++
+ #include <stdlib.h>
+-#include <iostream.h>
+ #include <stdio.h>
+-}
++
++#include <iostream>
+ 
+ HTML::HTML(string title, bool bodywhite, string description,
+ 		string keywords, string address, string encoding,
+diff -ru cgilib-0.1.1/src/html.h cgilib-0.1.1-/src/html.h
+--- cgilib-0.1.1/src/html.h	2000-03-25 03:44:01.000000000 +0100
++++ cgilib-0.1.1-/src/html.h	2003-09-16 21:10:24.000000000 +0200
+@@ -6,6 +6,8 @@
+ #include <map>
+ #include <list>
+ 
++using namespace std;
++
+ class form;
+ typedef list<string> stringlist;
+ 
+diff -ru cgilib-0.1.1/src/socket.h cgilib-0.1.1-/src/socket.h
+--- cgilib-0.1.1/src/socket.h	2000-03-20 09:34:39.000000000 +0100
++++ cgilib-0.1.1-/src/socket.h	2003-09-16 21:09:10.000000000 +0200
+@@ -2,11 +2,13 @@
+ #ifndef RH_SOCKET_H
+ #define RH_SOCKET_H 1
+ 
++#include <sys/socket.h>
++
+ #include <string>
+ #include <iostream>
+-extern "C" {
+-#include <sys/socket.h>
+-}
++
++using namespace std;
++
+ 
+ /** Class for socket handling...
+   */
+diff -u cgilib-0.1.1-/test/cgi.cc cgilib-0.1.1/test/cgi.cc
+--- cgilib-0.1.1-/test/cgi.cc	2000-03-25 03:44:01.000000000 +0100
++++ cgilib-0.1.1/test/cgi.cc	2003-09-16 21:30:03.000000000 +0200
+@@ -1,5 +1,6 @@
+ #include "cgi.h"
+ #include "html.h"
++#include <iostream>
+ main(int argc, char **argv)
+ {
+ 	CGI a;
+diff -u cgilib-0.1.1-/test/form.cc cgilib-0.1.1/test/form.cc
+--- cgilib-0.1.1-/test/form.cc	2000-03-25 03:44:01.000000000 +0100
++++ cgilib-0.1.1/test/form.cc	2003-09-16 21:30:18.000000000 +0200
+@@ -1,5 +1,6 @@
+ #include "html.h"
+ #include "form.h"
++#include <iostream>
+ main(int argc, char **argv)
+ {
+ 	HTML h("Sample HTML generation");
