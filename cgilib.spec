@@ -2,13 +2,14 @@ Summary:	A CGI (Common Gateway Interface) library for C++
 Summary(pl):	Biblioteka CGI dla C++
 Name:		cgilib
 Version:	0.1.1
-Release:	1
+Release:	2
 License:	GPL
-Group:		Development/Libraries
+Group:		Libraries
 Source0:	http://dl.sourceforge.net/cgilib/%{name}-%{version}.tar.bz2
 # Source0-md5:	961308218b6e19ed98aacfd397a0f062
 Patch0:		%{name}-misc.patch
 Patch1:		%{name}-am_ac.patch
+Patch2:		%{name}-gcc3.patch
 URL:		http://cgilib.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -50,11 +51,10 @@ Static cgilib library.
 Biblioteka statyczna cgilib.
 
 %prep
-rm -rf $RPM_BUILD_ROOT
-
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 rm -f *.m4 missing
