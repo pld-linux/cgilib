@@ -6,6 +6,7 @@ Release:	1
 License:	GPL
 Group:		Development/Libraries
 Source0:	http://dl.sourceforge.net/cgilib/%{name}-%{version}.tar.bz2
+# Source0-md5:	961308218b6e19ed98aacfd397a0f062
 Patch0:		%{name}-misc.patch
 Patch1:		%{name}-am_ac.patch
 URL:		http://cgilib.sourceforge.net/
