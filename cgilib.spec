@@ -30,7 +30,7 @@ WWW) napisan± w C++.
 Summary:	Header files and develpment documentation for cgilib
 Summary(pl):	Pliki nag³ówkowe oraz dokumentacja developerska dla cgilib
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files and develpment documentation for cgilib.
@@ -42,7 +42,7 @@ Pliki nag³ówkowe oraz dokumentacja developerska dla cgilib.
 Summary:	Static cgilib library
 Summary(pl):	Biblioteka statyczna cgilib
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static cgilib library.
