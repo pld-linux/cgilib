@@ -1,5 +1,5 @@
 Summary:	A CGI (Common Gateway Interface) library for C++
-Summary(pl.UTF-8):   Biblioteka CGI dla C++
+Summary(pl.UTF-8):	Biblioteka CGI dla C++
 Name:		cgilib
 Version:	0.1.1
 Release:	2
@@ -28,7 +28,7 @@ WWW) napisaną w C++.
 
 %package devel
 Summary:	Header files and develpment documentation for cgilib
-Summary(pl.UTF-8):   Pliki nagłówkowe oraz dokumentacja developerska dla cgilib
+Summary(pl.UTF-8):	Pliki nagłówkowe oraz dokumentacja developerska dla cgilib
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -40,7 +40,7 @@ Pliki nagłówkowe oraz dokumentacja developerska dla cgilib.
 
 %package static
 Summary:	Static cgilib library
-Summary(pl.UTF-8):   Biblioteka statyczna cgilib
+Summary(pl.UTF-8):	Biblioteka statyczna cgilib
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
