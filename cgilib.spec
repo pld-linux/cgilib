@@ -1,5 +1,5 @@
 Summary:	A CGI (Common Gateway Interface) library for C++
-Summary(pl):	Biblioteka CGI dla C++
+Summary(pl.UTF-8):   Biblioteka CGI dla C++
 Name:		cgilib
 Version:	0.1.1
 Release:	2
@@ -21,33 +21,33 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 cgilib is a library for programming CGIs (Common Gateway Interface,
 most commonly used for server-side web page scripting) in C++
 
-%description -l pl
-cgilib jest bibliotek± do programowania CGI (Common Gateway Interface,
-najbardziej popularny sposób uruchamiania skryptów po stronie serwera
-WWW) napisan± w C++.
+%description -l pl.UTF-8
+cgilib jest bibliotekÄ… do programowania CGI (Common Gateway Interface,
+najbardziej popularny sposÃ³b uruchamiania skryptÃ³w po stronie serwera
+WWW) napisanÄ… w C++.
 
 %package devel
 Summary:	Header files and develpment documentation for cgilib
-Summary(pl):	Pliki nag³ówkowe oraz dokumentacja developerska dla cgilib
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe oraz dokumentacja developerska dla cgilib
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files and develpment documentation for cgilib.
 
-%description devel -l pl
-Pliki nag³ówkowe oraz dokumentacja developerska dla cgilib.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe oraz dokumentacja developerska dla cgilib.
 
 %package static
 Summary:	Static cgilib library
-Summary(pl):	Biblioteka statyczna cgilib
+Summary(pl.UTF-8):   Biblioteka statyczna cgilib
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static cgilib library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteka statyczna cgilib.
 
 %prep
